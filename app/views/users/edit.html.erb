@@ -1,3 +1,5 @@
+<div class="mx-auto" style="width: 200px;">
+
 <h2 class="form-header-title">User info</h2>
 <%= form_for(@user) do |f| %>
 
@@ -12,17 +14,16 @@
 
  <%= attachment_image_tag @user, :profile_image, size: "100x100",  class: "img-circle pull-left profile-thumb", fallback: "no_images.jpg"%>
      <label class="control-label sr-only" for="inputEmail">ProfileImage</label>
-     <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+     <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
 
-     <label class="control-label sr-only" for="inputEmail">Name</label>
-     <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"名前"%>
-        <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
+     <%= f.label :Name %><br />
+          <%= f.text_area :name, autofocus: true %>
 
-<div class="field">
 <%= f.label :introduction %><br />
     <%= f.text_area :introduction, autofocus: true %>
-  </div>
 
-  <%= f.submit "Update user", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+  <%= f.submit "Update user" %>
 <% end %>
+</div>
+
 

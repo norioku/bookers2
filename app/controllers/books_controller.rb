@@ -13,6 +13,7 @@ def show
 @book = Book.new
 @books = Book.find(params[:id])
 @user = @books.user
+@users = User.all
 end
 
 def create
@@ -30,17 +31,20 @@ end
 
 def edit
     @book = Book.find(params[:id])
+    if current_user != @book.user
+  redirect_to books_path
+end
   end
 
 def update
-    book = Book.find(params[:id])
-    if book.update(book_params)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
       flash[:notice] = "Book was successfully created."
-    redirect_to book_path(book.id)
+    redirect_to book_path
   else
   @books =Book.all
   @user = current_user
-  render action: :index
+  render action: :edit
 end
 end
 

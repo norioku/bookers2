@@ -41,7 +41,6 @@ def update
     flash[:notice] = "You have updated user successfully."
     redirect_to user_path(@user.id)
     else
-    @user = User.find(params[:id])
     render action: :edit
 end
 end
